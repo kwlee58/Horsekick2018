@@ -1,0 +1,49 @@
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/Horsekick[?1034hKee-Wonui-iMac-27:Horsekick coop2711$ [KKee-Wonui-iMac-27:Horsekick coop2711$ ls -a;l[K[K[Kal
+total 32
+drwxr-xr-x  11 coop2711  staff   374 Apr 12 21:53 .
+drwxr-xr-x  28 coop2711  staff   952 Apr 15  2017 ..
+-rw-r--r--@  1 coop2711  staff  6148 May 27  2017 .DS_Store
+drwxr-xr-x   4 coop2711  staff   136 Apr 12 21:53 .Rproj.user
+drwxr-xr-x   8 coop2711  staff   272 Jan 17  2016 .git
+-rw-r--r--   1 coop2711  staff   205 Apr 12 21:53 Horsekick.Rproj
+drwxr-xr-x  12 coop2711  staff   408 Apr 13 00:42 R
+-rw-------   1 coop2711  staff    12 Oct  9  2015 README.md
+drwxr-xr-x   3 coop2711  staff   102 Jan 17  2016 data
+drwxr-xr-x   9 coop2711  staff   306 Apr 12 22:02 docs
+drwxr-xr-x   4 coop2711  staff   136 Jan 17  2016 pics
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ git remote -v
+fatal: Not a git repository (or any of the parent directories): .git
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ rm -rf .git
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ git init
+Initialized empty Git repository in /Users/coop2711/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/Horsekick/.git/
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ cd ..
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WDKee-Wonui-iMac-27:R.WD coop2711$ ls
+Doorae_Class		Literacy		Rwanda
+Economic_Activity	Midterm			Rwanda.zip
+HRD_data		Monty_1502_Case_Studies	SM201602
+Horsekick		Pacifique		Sejong
+Households_survey	Peter			Sejong_v2
+Inequality		Peter.zip		baekdam
+Lifetable		Poll_1987_kr		transportation
+Lifetable_Bak		Poll_2017
+Lifetable_v2		Rhistory_text
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WDKee-Wonui-iMac-27:R.WD coop2711$ cd Horsekick/
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.DS_Store[m
+	[31m.Rproj.user/[m
+	[31mHorsekick.Rproj[m
+	[31mR/[m
+	[31mREADME.md[m
+	[31mdata/[m
+	[31mdocs/[m
+	[31mpics/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+]0;~/Google 드라이브/Works/Class/Case_Studies_in_Stat/R.WD/HorsekickKee-Wonui-iMac-27:Horsekick coop2711$ git add -A .
