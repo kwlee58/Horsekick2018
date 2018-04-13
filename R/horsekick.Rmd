@@ -1,11 +1,20 @@
 ---
-title: "Bortkewwitsch's Horsekicks"
+title: "Bortkewitsch's Horsekicks"
 author: "coop711"
 date: "2015년 5월 18일"
 output: html_document
 ---
 
-프러시아에서 20년간 14개 연대에서 발생한 말발굽에 의한 사망 사고 기록
+프러시아에서 20년간 14개 연대에서 발생한 말발굽에 의한 사망 사고 기록. 
+원시자료는 `pscl` 패키지의 `prussian`이다.
+
+```{r, message = FALSE}
+# install.packages("pscl", repos = "https://cran.rstudio.com")
+library(pscl)
+data(prussian)
+str(prussian)
+table(prussian$y)
+```
 
 ```{r}
 n_deaths <- 0:4
@@ -44,10 +53,16 @@ axis(side = 2,
      at = horsekick_cum, 
      labels = format(horsekick_cum, nsmall = 1),
      las = 2)
+lines(x = c(0, 1), y = rep(horsekick_cum[1], 2), lty = 1)
+lines(x = c(1, 2), y = rep(horsekick_cum[2], 2), lty = 1)
+lines(x = c(2, 3), y = rep(horsekick_cum[3], 2), lty = 1)
+lines(x = c(3, 4), y = rep(horsekick_cum[4], 2), lty = 1)
+lines(x = c(4, 5), y = rep(horsekick_cum[5], 2), lty = 1)
+points(x = n_deaths, y = horsekick_cum,
+       pch = 21, bg = "white", col = "black")
 ```
 
 누적 분포를 알기 쉽도록 격자 설정. 구분선을 아래서부터 차례로 그려갈 때
-
 
 ```{r fig.width = 5.5, fig.height = 5.5}
 options(digits = 3)
@@ -58,7 +73,12 @@ plot(x = n_deaths, y = horsekick_cum,
      yaxt = "n")
 axis(side = 2,
      at = c(50, horsekick_cum), 
-     labels = format(c(50, horsekick_cum), nsmall = 1),
+     labels = format(c("", horsekick_cum[1:4], ""), nsmall = 1),
+     las = 2)
+axis(side = 2,
+     at = c(48.5, horsekick_cum[5] + 1.5), 
+     tick = FALSE,
+     labels = format(c(50, horsekick_cum[5]), nsmall = 1),
      las = 2)
 abline(v = 0:4, 
        lty = 3)
@@ -96,16 +116,18 @@ l_xy <- function(h) lines(x = h[1:2], y = h[3:4], lty = 3)
 
 ```{r fig.width = 5.5, fig.height = 5.5, message = FALSE}
 par(family = "HCR Dotum LVT")
+library(RColorBrewer)
+h_pal <- brewer.pal(4, name = "Purples")
 source("horsekick_plot.R", echo = FALSE)
 apply(h_xy, MARGIN = 1, FUN = l_xy)
 polygon(c(0, 1, 1, 0), c(rep(horsekick_cum[1], 2), rep(horsekick_cum[5], 2)), 
-        col = rainbow(4)[1])
+        col = h_pal[1])
 polygon(c(1, 2, 2, 1), c(rep(horsekick_cum[2], 2), rep(horsekick_cum[5], 2)), 
-        col = rainbow(4)[2])
+        col = h_pal[2])
 polygon(c(2, 3, 3, 2), c(rep(horsekick_cum[3], 2), rep(horsekick_cum[5], 2)), 
-        col = rainbow(4)[3])
+        col = h_pal[3])
 polygon(c(3, 4, 4, 3), c(rep(horsekick_cum[4], 2), rep(horsekick_cum[5], 2)), 
-        col = rainbow(4)[4])
+        col = h_pal[4])
 points(x = n_deaths, y = horsekick_cum, 
        pch = 21, bg = "white", col = "black")
 ```
@@ -174,13 +196,13 @@ axis(side = 2,
 abline(v = 0:5, lty = 3)
 apply(h_xy, MARGIN = 1, FUN = l_xy)
 polygon(c(0, 1, 1, 0), c(rep(horsekick_cum[1], 2), rep(horsekick_cum[2], 2)), 
-        col = rainbow(4)[1])
+        col = h_pal[1])
 polygon(c(0, 2, 2, 0), c(rep(horsekick_cum[2], 2), rep(horsekick_cum[3], 2)), 
-        col = rainbow(4)[2])
+        col = h_pal[2])
 polygon(c(0, 3, 3, 0), c(rep(horsekick_cum[3], 2), rep(horsekick_cum[4], 2)), 
-        col = rainbow(4)[3])
+        col = h_pal[3])
 polygon(c(0, 4, 4, 0), c(rep(horsekick_cum[4], 2), rep(horsekick_cum[5], 2)), 
-        col = rainbow(4)[4])
+        col = h_pal[4])
 points(x = n_deaths, y = horsekick_cum, 
        pch = 21, bg = "white", col = "black")
 ```
