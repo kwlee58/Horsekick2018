@@ -1,0 +1,12 @@
+x <- c(170, 165, 174, 158, 172, 160)
+c <- seq(158, 174, by = 0.1)
+z <- apply(sapply(x, function(z) abs(z - c)), MARGIN = 1, FUN = mean)
+plot(x = c, y = z, type = "l", xaxt = "n", ylab = "Mean Abolute Deviation")
+axis(side = 1, at = x, labels = x)
+title(main = "MAD Property of Median (Even Numbers)")
+x <- x[-1]
+c <- seq(158, 174, by = 0.1)
+z <- apply(sapply(x, function(z) abs(z - c)), MARGIN = 1, FUN = mean)
+plot(x = c, y = z, type = "l", xaxt = "n", ylab = "Mean Abolute Deviation")
+axis(side = 1, at = x, labels = x)
+title(main = "MAD Property of Median (Odd Numbers)")

@@ -5,23 +5,29 @@ date: "2015년 5월 18일"
 output: html_document
 ---
 
+```{r, echo = FALSE}
+library(pander)
+library(knitr)
+```
+
 프러시아에서 20년간 14개 연대에서 발생한 말발굽에 채여 사망한 사고 기록 [^1] 
 [^1]: 원시자료는 `pscl` 패키지의 `prussian`이다.
 
-```{r, message = FALSE}
+```{r, echo = FALSE, message = FALSE}
 # install.packages("pscl", repos = "https://cran.rstudio.com")
 library(pscl)
 data(prussian)
 str(prussian)
-table(prussian$y)
+pander(table(prussian$y))
 ```
 
 ```{r}
 n_deaths <- 0:4
 n_corps <- c(144, 91, 32, 11, 2)
 horsekick <- data.frame(Deaths = n_deaths, Corps = n_corps)
-horsekick
+pander(t(horsekick))
 ```
+
 
 이 자료를 하나의 긴 벡터로 나타내는 것은 간단히
 
@@ -121,6 +127,7 @@ l_xy <- function(h) lines(x = h[1:2], y = h[3:4], lty = 3)
 누적분포 윗 면적을 명확히 표시하기 위하여 빗금
 
 ```{r fig.width = 5.5, fig.height = 5.5, message = FALSE}
+png(filename = "../pics/horsekick_cum.png", width = 480, height = 480)
 par(family = "HCR Dotum LVT")
 library(RColorBrewer)
 h_pal <- brewer.pal(4, name = "Purples")
@@ -138,6 +145,7 @@ points(x = n_deaths, y = horsekick_cum,
        pch = 21, bg = "black", col = "black")
 points(x = n_deaths[2:5], y = horsekick_cum[1:4],
        pch = 21, bg = "white", col = "black")
+dev.off()
 ```
 
 `polygon()`들을 한 줄로 정리하기 위하여 좌표들을 모으고, 
@@ -197,6 +205,7 @@ points(x = n_deaths[2:5], y = horsekick_cum[1:4],
 
 ```{r fig.width = 5.5, fig.height = 5.5, message = FALSE}
 options(digits = 3)
+png(filename = "../pics/horsekick_prob.png", width = 480, height = 480)
 par(family = "HCR Dotum LVT")
 source("./horsekick_plot.R", echo = FALSE)
 apply(h_xy, MARGIN = 1, FUN = l_xy)
@@ -212,6 +221,7 @@ points(x = n_deaths, y = horsekick_cum,
        pch = 21, bg = "black", col = "black")
 points(x = n_deaths[2:5], y = horsekick_cum[1:4],
        pch = 21, bg = "white", col = "black")
+dev.off()
 ```
 
 이번에 쌓아놓은 막대 면적의 합은 평균을 계산한 것임을 확인.
